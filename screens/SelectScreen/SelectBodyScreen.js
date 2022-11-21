@@ -23,7 +23,6 @@ const SelectBodyScreen = ({route, navigation}) => {
                 }
             )
         }, [])
-
         return(
                 <FlatList 
                     data={titles}

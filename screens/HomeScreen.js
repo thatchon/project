@@ -28,7 +28,8 @@ function HomeScreen({navigation}) {
                     navigation.navigate("Search", {prev: "ค้นหา"})
                 }}>
                     <View style={styles.box_searchbar}>
-                        <Text style={styles.text_searchbar}>ปวดหัว ท้องเสีย เป็นหวัด</Text>
+                        <FontAwesome style={styles.icon_heart} name="search" size={18} color="black" />
+                        <Text style={styles.text_searchbar}>ไมเกรน เข่าเสื่อม ไข้หวัด</Text>
                     </View>
                 </TouchableOpacity>
             </View>
@@ -113,13 +114,16 @@ const styles = StyleSheet.create({
         borderWidth: 0.5,
         borderRadius: 3,
         alignSelf: 'center',
-        justifyContent: "center"
+        justifyContent: "center",
+        flexDirection: "row"
     },
     text_searchbar: {
         textAlign: "center",
         color: "#DFDFDF",
         fontSize: 17,
-        fontWeight: "400"
+        fontWeight: "400",
+        alignSelf: 'center',
+        padding: 5
     },
     image_searchbar: {
         alignItems: "center"

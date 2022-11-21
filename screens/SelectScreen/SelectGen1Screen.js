@@ -32,7 +32,7 @@ const SelectGen1Screen = ({route, navigation}) => {
                         <TableGrid
                             title={item.title}
                             onSelect={() => {
-                                navigation.navigate("Detail", {prev: "ทั่วไป ไข้หวัด ผิวหนัง ฯลฯ",Title: item.title , Des: item.des})
+                                navigation.navigate("DetailHBL", {prev: "ทั่วไป ไข้หวัด ผิวหนัง ฯลฯ",Title: item.title , Des: item.des})
                             }}
                         />
                     )}

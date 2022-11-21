@@ -31,7 +31,7 @@ const SelectDissaseScreen = ({route, navigation}) => {
                         <TableGrid
                             title={item.title}
                             onSelect={() => {
-                                navigation.navigate("Detail", {prev: "โรค", Title: item.title , Des: item.des})
+                                navigation.navigate("Detail", {prev: "โรค", Title: item.title , Des: item.des, Id: item.id})
                             }}
                         />
                     )}

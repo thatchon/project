@@ -6,6 +6,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { firebase } from '../data/firebaseDB'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { HeaderButtons, Item } from "react-navigation-header-buttons"
+import CustomHeaderButton from "../components/CustomHeaderButton"
 
 import FavoriteScreen from "../screens/FavoriteScreen";
 import RecordScreen from "../screens/RecordScreen";
@@ -25,8 +26,7 @@ import DetailFirstAidScreen from "../screens/DetailFirstAidScreen";
 import DetailHBLScreen from "../screens/DetailHBLScreen";
 import LoginScreen from "../screens/LoginScreen";
 import SignUpScreen from "../screens/SignUpScreen";
-import AdminScreen from "../screens/AdminScreen";
-import CustomHeaderButton from "../components/CustomHeaderButton";
+import Button from "../components/Btn";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -58,14 +58,6 @@ function MyStack() {
         ({ route }) => ({
           title: route.params.prev,
         }) }/>
-      <Stack.Screen name="Detail" component={DetailDissaseScreen} options={
-        ({ route }) => ({
-          title: route.params.prev,
-        }) }/>
-        <Stack.Screen name="DetailHos" component={DetailHospitalScreen} options={
-        ({ route }) => ({
-          title: route.params.prev,
-        }) }/>
         <Stack.Screen name="DetailFirstAid" component={DetailFirstAidScreen} options={
         ({ route }) => ({
           title: route.params.prev,
@@ -74,11 +66,67 @@ function MyStack() {
         ({ route }) => ({
           title: route.params.prev,
         }) }/>
-        <Stack.Screen name="Second" component={SecondRecordScreen} options={
+        <Stack.Screen name="Search" component={SearchScreen} options={
         ({ route }) => ({
           title: route.params.prev,
         }) }/>
-        <Stack.Screen name="Search" component={SearchScreen} options={
+    </Stack.Navigator>
+  );
+}
+
+function MyStackHos () {
+  return(
+    <Stack.Navigator  screenOptions={{ 
+      headerStyle: { 
+        backgroundColor: "#C2FFD7", },
+      headerTintColor: "black",
+      headerTitleAlign: 'center'  }}>
+      <Stack.Screen name="Hospital" component={HospitalScreen} 
+      options={{
+        title: "โรงพยาบาล"
+      }} />
+      <Stack.Screen name="DetailHos" component={DetailHospitalScreen} 
+      options={
+        ({ route }) => ({
+          title: route.params.prev,
+        }) }/>
+    </Stack.Navigator>
+  );
+}
+
+function MyStackDis () {
+  return(
+    <Stack.Navigator screenOptions={{ 
+      headerStyle: { 
+        backgroundColor: "#C2FFD7", },
+      headerTintColor: "black",
+      headerTitleAlign: 'center'  }}>
+      <Stack.Screen name="Dissase" component={SelectDissaseScreen}
+      options={{
+        title: "โรค"
+      }} />
+      <Stack.Screen name="Detail" component={DetailDissaseScreen} 
+      options={
+        ({ route }) => ({
+          title: route.params.prev,
+        }) }/>
+    </Stack.Navigator>
+  );
+}
+
+function MyStackRec () {
+  return(
+    <Stack.Navigator screenOptions={{ 
+      headerStyle: { 
+        backgroundColor: "#C2FFD7", },
+      headerTintColor: "black",
+      headerTitleAlign: 'center'  }}>
+      <Stack.Screen name="Record" component={RecordScreen}
+      options={{
+        title: "บันทึกสุขภาพ"
+      }} />
+      <Stack.Screen name="Second" component={SecondRecordScreen} 
+      options={
         ({ route }) => ({
           title: route.params.prev,
         }) }/>
@@ -114,20 +162,23 @@ export default function MyNavigator() {
             return <MaterialCommunityIcons name="home" size={32} color={color}  />;
             },
             }} />
-          <Tab.Screen name="โรงพยาบาล" component={HospitalScreen}
+          <Tab.Screen name="โรงพยาบาล" component={MyStackHos}
                   options={{
+            headerShown: false,        
             tabBarIcon: ({ color }) => {
               return <MaterialCommunityIcons name="hospital-building" size={32} color={color}  />;
             },
             }} />
-          <Tab.Screen name="โรค" component={SelectDissaseScreen}
+          <Tab.Screen name="โรค" component={MyStackDis}
                   options={{
+            headerShown: false,
             tabBarIcon: ({ color }) => {
               return <MaterialCommunityIcons name="doctor" size={32} color={color}  />;
             },
             }} />
-          <Tab.Screen name="บันทึกสุขภาพ" component={RecordScreen}
+          <Tab.Screen name="บันทึกสุขภาพ" component={MyStackRec}
                   options={{
+            headerShown: false,
             tabBarIcon: ({ color }) => {
               return <MaterialCommunityIcons name="book" size={32} color={color}  />;
             },

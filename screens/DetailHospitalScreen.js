@@ -1,8 +1,11 @@
 import React from "react";
-import { View, Text, Button, StyleSheet} from "react-native";
+import { View, Text, Button, StyleSheet, Linking, TouchableOpacity} from "react-native";
+import { Feather } from '@expo/vector-icons'; 
 
 function DetailHospitalScreen({route, navigation}) {
     const {prev, Title, Tel, Num_bed, Address} = route.params;
+    const new_title = route.params.Title
+
     return(
         <View style={styles.container}>
             <View style={styles.box_header}> 
@@ -39,6 +42,14 @@ function DetailHospitalScreen({route, navigation}) {
                         </Text>
                     </View>
                 </View>
+                <View style={styles.space}>
+                    <TouchableOpacity onPress={ ()=>{ Linking.openURL("https://www.google.co.th/maps/search/" + new_title, '_blank').catch((err) => console.error('An error occurred', err));}} >
+                        <View style={styles.box_general}>
+                            <Feather style={styles.icon_heart} name="map-pin" size={32} color="white" />
+                            <Text style={styles.text_general}>แผนที่</Text>
+                        </View>
+                    </TouchableOpacity>
+                </View>
         </View>
     );
 }
@@ -60,7 +71,8 @@ const styles = StyleSheet.create({
         color: 'white',
         textAlign: 'left',
         marginLeft: 20,
-        marginTop: 10
+        marginTop: 10,
+        marginRight: 20
     },
     text_subheader: {
         fontSize: 14,
@@ -84,7 +96,6 @@ const styles = StyleSheet.create({
         borderBottomColor: "#d7d7d9",
         borderBottomWidth: 1,
         marginLeft: 15,
-        
       },
       text_title_sub: {
         fontSize: 15,
@@ -93,6 +104,31 @@ const styles = StyleSheet.create({
         textAlign: "left",
         marginTop: 15
       },
+      icon_heart: {
+        alignSelf: 'center',
+        margin: 5
+    },
+    space: {
+        width: "100%",
+        height: "100%",
+    },
+    box_general: {
+        width: "40%",
+        height: 50,
+        backgroundColor: "#0390fc",
+        alignSelf: 'center',
+        justifyContent: "center",
+        flexDirection: 'row',
+        borderRadius: 5,
+        margin: 20
+    },
+    text_general: {
+        textAlign: "center",
+        color: "white",
+        fontSize: 20,
+        fontWeight: "600",
+        alignSelf: 'center',
+    },
   });
 
 export default DetailHospitalScreen;

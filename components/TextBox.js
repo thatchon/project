@@ -6,12 +6,13 @@ const styles = StyleSheet.create({
         height: 42,
         width: "92%",
         borderRadius: 25,
-        marginTop: 20
+        marginTop: 20,
+        flexDirection: 'row'
     },
     textInput: {
         marginTop: 0,
         width: "100%",
-        borderColor: "#0B3270",
+        borderColor: "#fff",
         borderWidth: 1,
         paddingLeft: 15
     }
